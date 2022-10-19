@@ -6,10 +6,12 @@ export const TodoListApp = () => {
 
   const[title,setTitle] =useState("");
   const[titles,setTitles]=useState([]);
+  const[isValidate,setValidate]=useState(true);
 
   function handleChange(event){
     const value = event.target.value
     setTitle(value);
+    setValidate(false);
   }
   function handleSubmit(event){
     event.preventDefault();
@@ -37,7 +39,7 @@ export const TodoListApp = () => {
     <div className="todoContainer">
         <form className="todoCreateApp" onSubmit={handleSubmit}>
              <input className="todoInput" onChange={handleChange} value={title} type="text" />
-             <input className="buttonCreate" onClick={handleSubmit} value="Create" type="submit"></input>
+             <input className="buttonCreate" onClick={handleSubmit} disabled={isValidate ? true : false }value="Create" type="submit"></input>
         </form>
         <div className="todosContainer">
           {
